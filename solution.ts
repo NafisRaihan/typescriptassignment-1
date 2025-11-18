@@ -52,11 +52,7 @@ function filterByRating(books: BookType[]): BookType[] {
   return books.filter(book => book.rating >= 4);
 }
 
-const books: BookType[] = [
-  { title: 'Book A', rating: 4.5 },
-  { title: 'Book B', rating: 3.2 },
-  { title: 'Book C', rating: 5.0 },
-];
+
 
 
 
