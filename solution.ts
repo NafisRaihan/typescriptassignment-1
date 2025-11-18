@@ -106,20 +106,6 @@ const myBook: Book = {
 printBookDetails(myBook);
 
 
-/*
-Create a function getUniqueValues that accepts two arrays and returns a new array containing only the unique values from both arrays, without any duplicates.
-
-Requirements:
-You must write the correct type for the function parameter and the return type.
-The function should handle arrays of strings or numbers.
-You are not allowed to use any built-in methods to solve this problem.
-Sample Input:
-const array1 = [1, 2, 3, 4, 5];
-const array2 = [3, 4, 5, 6, 7];
-console.log(getUniqueValues(array1, array2));
-
-*/
-
 
 function getUniqueValues<T extends string | number>(array1: T[], array2: T[]): T[] {
   const combinedArray: T[] = [];
@@ -153,3 +139,34 @@ function getUniqueValues<T extends string | number>(array1: T[], array2: T[]): T
 const array1 = [1, 2, 3, 4, 5];
 const array2 = [3, 4, 5, 6, 7];
 console.log(getUniqueValues(array1, array2));
+
+
+
+interface Product {
+    name: string;
+    price: number;
+    quantity: number;
+    discount?: number; 
+}
+
+function calculateTotalPrice(products: Product[]): number {
+    if (products.length === 0) {
+        return 0;
+    }
+
+    return products.map(product => {
+        const baseTotal = product.price * product.quantity;
+            const discountAmount = product.discount ? baseTotal * (product.discount / 100) : 0;
+
+            return baseTotal - discountAmount;
+    }).reduce((sum, price) => sum + price, 0); 
+}
+
+
+const products = [
+  { name: 'Pen', price: 10, quantity: 2 },
+  { name: 'Notebook', price: 25, quantity: 3, discount: 10 },
+  { name: 'Bag', price: 50, quantity: 1, discount: 20 },
+];
+
+console.log(calculateTotalPrice(products));
